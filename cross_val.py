@@ -7,6 +7,10 @@ import matplotlib.pyplot as plt
 # Load the labeled accelerometer data from a CSV file
 data = pd.read_csv("demo5.csv")
 
+data.drop(['Unnamed: 0', 'katsse', 'akev'], axis=1, inplace=True)
+data['possture'].replace(['walk','sits down','from walk to sit','none'],[0,1,2,3],inplace=True)
+
+
 # Separate the features (accelerometer data) from the labels (posture)
 X = data.drop("possture", axis=1)
 y = data["possture"]
